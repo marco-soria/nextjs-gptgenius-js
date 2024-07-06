@@ -85,24 +85,26 @@ export const createNewTour = async (tour) => {
 
 export const getAllTours = async (searchTerm) => {
   if (!searchTerm) {
-    const tours = await prisma.tour.findMany({
+    const tours = await prisma?.tour.findMany({
       orderBy: {
         city: 'asc',
       },
     });
     return tours;
   }
-  const tours = await prisma.tour.findMany({
+  const tours = await prisma?.tour.findMany({
     where: {
       OR: [
         {
           city: {
             contains: searchTerm,
+            mode: "insensitive",
           },
         },
         {
           country: {
             contains: searchTerm,
+            mode: "insensitive",
           },
         },
       ],
