@@ -1,25 +1,17 @@
-import Link from 'next/link';
+import MemberProfile from './MemberProfile';
+import NavLinks from './NavLinks';
+import SidebarHeader from './SidebarHeader';
 
-const links = [
-  { href: '/chat', label: 'chat' },
-  { href: '/tours', label: 'tours' },
-  { href: '/tours/new-tour', label: 'new tour' },
-  { href: '/profile', label: 'profile' },
-];
-
-const NavLinks = () => {
+const Sidebar = () => {
   return (
-    <ul className='menu text-base-content'>
-      {links.map((link) => {
-        return (
-          <li key={link.href}>
-            <Link href={link.href} className='capitalize'>
-              {link.label}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div className='px-4 w-80 min-h-full bg-base-300 py-12 grid grid-rows-[auto,1fr,auto]'>
+      {/* first row */}
+      <SidebarHeader />
+      {/* second row */}
+      <NavLinks />
+      {/* third row */}
+      <MemberProfile />
+    </div>
   );
 };
-export default NavLinks;
+export default Sidebar;
